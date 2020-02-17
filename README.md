@@ -1,5 +1,3 @@
-# streamlit_covid
-Project to illustrate how easy to develop a web app with Streamlit
 # Streamlit made web-app development a breeze
 
 This project demonstrates the ease of web-app development through Streamlit. To illustrate this ease of web-app development with Streamlit for data sharing, we use Coronavirus live data from worldometers.info. With just a couple of lines of codes, one can readily create interactive widgets, present a table of data and interactive charts.
