@@ -13,9 +13,9 @@ And environment with Streamlit library installed. Due to its tied dependencies o
 ```
 On Mac, create a virtual environment called venv with pip and python:
 $ conda create -n venv pip python=3.6
-# To activate this environment, use:
+To activate this environment, use:
 > source activate venv
-# To install Streamlit, use:
+To install Streamlit, use:
 > pip install streamlit
 
 On Linux, each step above could be done as follows, respectively:
