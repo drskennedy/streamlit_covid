@@ -30,6 +30,9 @@ A step by step series of examples that tell you how to get a development env run
 ```
 To start the web-app from your dev machine:
 > streamlit run covid_app.py
+
+To start it without downloading to your local machine, use:
+> streamlit run https://raw.githubusercontent.com/drskennedy/streamlit_covid/master/covid_app.py
 ```
 
 ## Built With
