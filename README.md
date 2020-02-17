@@ -18,9 +18,10 @@ $ conda create -n venv pip python=3.6
 # To install Streamlit, use:
 > pip install streamlit
 
-On Linux, one could do:
+On Linux, each step above could be done as follows, respectively:
 $ virtualenv -p /usr/bin/python3 venv
 $ source venv/bin/activate
+$ pip install streamlit
 ```
 
 ### Running
