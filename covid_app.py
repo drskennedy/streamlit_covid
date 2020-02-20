@@ -74,6 +74,7 @@ def get_virus_data():
                 country_info = [cell.get_text().strip('+\n ').replace(",","") for cell in cells]
                 data_content.append(country_info)
     df = pd.DataFrame(data_content,columns=['Country','CaseCount','TodaysCases','TotalDealths','TodaysDeath','RecoveredCount','SevereCount','Region'])
+    df.loc[df.Country == "S. Korea",'Country'] = "South Korea"
     # replace all blank cells with 0
     df.replace(r'^\s*$', 0, regex=True, inplace=True)
     # column number columns to numeric`
@@ -117,7 +118,7 @@ st.sidebar.markdown('<br/><br/><font size="2">Data last updated :date:: <b>'+cur
 st.subheader('Selected countries')
 
 # display max score filter only when cases are selected
-if countrySelected:
+if countrySelected and metric:
     st.dataframe(new_df.style.applymap(color_stats,subset=['TotalDealths']))
     st.subheader(str(metric[0])+' for selected countries')
     fig1 = px.scatter(new_df, x="Country", y=metric[0], color="Country")
@@ -125,7 +126,7 @@ if countrySelected:
     st.plotly_chart(fig1)
 
     # plot map
-    country_to_focus = new_df['Country'][0]
+    country_to_focus = new_df['Country'].unique()[0]
     st.deck_gl_chart(
         viewport={
             'zoom': 3,
