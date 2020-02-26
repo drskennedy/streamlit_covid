@@ -74,7 +74,12 @@ def get_virus_data():
                 country_info = [cell.get_text().strip('+\n ').replace(",","") for cell in cells]
                 data_content.append(country_info)
     df = pd.DataFrame(data_content,columns=['Country','CaseCount','TodaysCases','TotalDealths','TodaysDeath','RecoveredCount','SevereCount','Region'])
+    # update country names on worldometers to match Google's data
     df.loc[df.Country == "S. Korea",'Country'] = "South Korea"
+    df.loc[df.Country == "USA",'Country'] = "United States"
+    df.loc[df.Country == "U.K.",'Country'] = "United Kingdom"
+    df.loc[df.Country == "U.A.E.",'Country'] = "United Arab Emirates"
+
     # replace all blank cells with 0
     df.replace(r'^\s*$', 0, regex=True, inplace=True)
     # column number columns to numeric`
@@ -118,7 +123,7 @@ st.sidebar.markdown('<br/><br/><font size="2">Data last updated :date:: <b>'+cur
 st.subheader('Selected countries')
 
 # display max score filter only when cases are selected
-if countrySelected and metric:
+if regions and countrySelected and metric:
     st.dataframe(new_df.style.applymap(color_stats,subset=['TotalDealths']))
     st.subheader(str(metric[0])+' for selected countries')
     fig1 = px.scatter(new_df, x="Country", y=metric[0], color="Country")
